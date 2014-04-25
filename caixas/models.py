@@ -1,8 +1,9 @@
+# coding: utf-8
 from django.db import models
-#from pessoas.models import Pessoa
+from pessoas.models import Pessoa
 
 class Caixa(models.Model):
-    #pessoa = models.ForeignKey(Pessoa)
+    pessoa = models.ForeignKey(Pessoa)
     #E = Entrada / S = Saida
     tipo = models.CharField(db_index=True, max_length='1', blank=False, null=False)
     descricao = models.CharField(db_index=True, max_length='200', blank=False, null=False)

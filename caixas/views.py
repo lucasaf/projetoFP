@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from .models import Caixa
+from pessoas.models import Pessoa
 
 
 def index(request):
@@ -11,12 +12,15 @@ def index(request):
 
 def caixaListar(request):
     caixas = Caixa.objects.all()[0:10]
+    pessoas = Pessoa.objects.all()[0:10]
 
-    return render(request, 'caixas/listaCaixas.html', {'caixas': caixas})
+    return render(request, 'caixas/listaCaixas.html', {'caixas': caixas, 'pessoas': pessoas})
 
 
 def caixaAdicionar(request):
-    return render(request, 'caixas/formCaixas.html')
+    pessoas = Pessoa.objects.all()
+    return render(request, 'caixas/formCaixas.html', {'pessoas': pessoas})
+
 
 
 def caixaSalvar(request):
@@ -28,7 +32,8 @@ def caixaSalvar(request):
         except:
             caixa = Caixa()
 
-        #pessoa.id.fk = request.POST.get('id', '')
+        caixa.pessoa_id = request.POST.get('pessoa_id', '0')
+        caixa.pessoa = Pessoa.objects.get(pk=request.POST.get('pessoa','1'))
         caixa.tipo = request.POST.get('tipo', '').upper()
         caixa.descricao = request.POST.get('descricao', '').upper()
         caixa.valor = request.POST.get('valor', '').upper()
