@@ -2,20 +2,20 @@
 
 <!DOCTYPE html>
 <html lang="pt_BR">
-  <head>
+<head>
     <meta charset="utf-8">
 
     <title>{% block titulo %}{% endblock titulo %} - Financeiro Pessoal</title>
 
     <!-- CSS -->
-    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
-    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jasny-bootstrap.min.css' %}" rel="stylesheet">
     <!-- FIM CSS -->
 
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- MENU -->
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid">
@@ -25,42 +25,42 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Financeiro Pessoal</a>
-        </div>
+        </button>
+        <a class="navbar-brand" href="/">Financeiro Pessoal</a>
+    </div>
 
-        <div class="collapse navbar-collapse" id="IDnavbar">
-          <ul class="nav navbar-nav">
-            <li><a href="/pessoas/"> <spam class="glyphicon glyphicon-user"></spam> Pessoas</a></li>
-            <li><a href="/caixas/"> <spam class="glyphicon glyphicon-inbox"></spam> Contas</a></li>
-            <li><a href="#"> <spam class="glyphicon glyphicon-stats"></spam> Fluxo de Caixa</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <div class="collapse navbar-collapse" id="IDnavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/pessoas/"> <spam class="glyphicon glyphicon-user"></spam> Pessoas</a></li>
+        <li><a href="/caixas/"> <spam class="glyphicon glyphicon-inbox"></spam> Contas</a></li>
+        <li><a href="caixas/fluxo/"> <spam class="glyphicon glyphicon-stats"></spam> Fluxo de Caixa</a></li>
+    </ul>
+</div>
+</div>
+</nav>
 
-    <!-- FIM MENU -->
-    <br />
-    <hr>
-      <div class="container">
-      <!-- CONTEUDO -->
-        {% block conteudo %}{% endblock conteudo %}
-      <!-- FIM CONTEUDO -->
-      </div>
-    <hr>
+<!-- FIM MENU -->
+<br />
+<hr>
+<div class="container">
+  <!-- CONTEUDO -->
+  {% block conteudo %}{% endblock conteudo %}
+  <!-- FIM CONTEUDO -->
+</div>
+<hr>
 
-    <!-- RODAPE -->
-    <footer>
-      <div align="center">&copy; Lucas Alves Ferreira</div>
-    </footer>
-    <!-- FIM RODAPE -->
+<!-- RODAPE -->
+<footer>
+  <div align="center">&copy; Lucas Alves Ferreira</div>
+</footer>
+<!-- FIM RODAPE -->
 
-    <!-- JavaScript -->
-    <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
-    <script src="{{ STATIC_URL }}js/core.js"></script>
-    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jasny-bootstrap.min.js"></script>
-    <!-- FIM JavaScript -->
+<!-- JavaScript -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/core.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jasny-bootstrap.min.js' %}"></script>
+<!-- FIM JavaScript -->
 
-  </body>
+</body>
 </html>

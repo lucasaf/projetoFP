@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Fluxo de Caixas{% endblock titulo %}
+
+{% block conteudo %}
+<h4>
+  <div align="center">
+    <form role="form" method="POST" action="/caixas/fluxo/busca/">
+      {% csrf_token %}
+      <div class="form-group">
+        <div class="row">
+
+          <div class="col-md-6">
+            <p class="help-bloxk">Data Inicial</p>
+            <input type="text" class="form-control" id="dataInicial" name="dataInicial" value="{{ dataInicial|date:"d/m/y" }}" placeholder="01/01/2014">
+          </div>
+
+          <div class="col-md-6">
+            <p class="help-bloxk">Data Final</p>
+            <input type="text" class="form-control" id="dataFinal" name="dataFinal" value="{{ dataFinal|date:"d/m/y" }}" placeholder="01/01/2014">
+          </div>
+        </div>
+
+
+        <div></div>
+
+        <div class="col-6" align="center">
+          <button type="submit" class="btn btn-primary">Pesquisar <span class="glyphicon glyphicon-search"></span></button>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+  <hr>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th>PagSeguro</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for caixa in caixas %}
+        <tr>
+          <td>{{ caixa.pessoa.nome }}</td>
+          <td>{{ caixa.tipo }}</td>
+          <td><a href="/caixas/editar/{{ caixa.pk }}">{{ caixa.descricao }}</a></td>
+          <td>{{ caixa.valor }}</td>
+          <td>{{ caixa.pagseguro }}</td>
+          <td>{{ caixa.data|date}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td><b>TOTAL:</b></td>
+          <td><b>{{ total }}</b></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- FIM TABELA -->
+
+  {% endblock conteudo %}
